@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoneyJSY - Reselling Shop</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #c48aff;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
+      color: #d9aaff;
+    }
+    a {
+      color: #c48aff;
+      text-decoration: none;
+    }
+    button {
+      background-color: #000; /* Black background */
+      border: 2px solid #c48aff; /* Purple border */
+      color: #c48aff; /* Purple text */
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    button:hover {
+      background-color: #c48aff; /* Purple background on hover */
+      color: #000; /* Black text on hover */
+    }
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #0d0d0d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    /* Content Wrapper */
+    .content {
+      padding-top: 70px;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .product-card {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .about, .contact {
+      background-color: #0a0a0a;
+      text-align: center;
+    }
+    .highlight-link {
+      display: inline-block;
+      background-color: #c48aff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin: 10px;
+      font-weight: bold;
+    }
+    .highlight-link:hover {
+      background-color: #b066ff;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0d0d0d;
+      font-size: 0.9rem;
+    }
+    .cart-wrapper {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 1000;
+    }
+    .cart-total {
+      background-color: #111;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 18px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      background-color: #111;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      color: #fff;
+    }
+    .close {
+      float: right;
+      color: #aaa;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .modal-body ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .modal-body li {
+      margin: 10px 0;
+    }
+    input[type="text"] {
+      background-color: #222;
+      color: #c48aff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 400px;
+    }
+    /* Order Confirmation Popup */
+    .order-popup {
+      display: none;
+      position: fixed;
+      z-index: 1002;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .popup-content {
+      background-color: #111;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      color: #fff;
+    }
+    .copy-box {
+      background-color: #222;
+      color: #c48aff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      width: 100%;
+      font-family: monospace;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">MoneyJSY</div>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to MoneyJSY</h1>
+      <p>Your one-stop shop for premium resale items.</p>
+    </section>
+    <!-- Products Section -->
+    <section id="products">
+      <h2 style="text-align:center;">Featured Products</h2>
+      <div style="text-align:center; margin-bottom: 20px;">
+        <input type="text" id="search-input" placeholder="Search for a product..." oninput="filterProducts()" />
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+    <!-- About -->
+    <section id="about">
+      <h2>About Us</h2>
+      <p>We are MoneyJSY — The biggest jersey reselling company in the game. All items are authentic and sourced with care.</p>
+    </section>
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Join our server on:</p>
+      <a href="https://discord.gg/HthFtYDFfD " target="_blank" class="highlight-link">Discord Server</a>
+      <p>Check us out on Snapchat:</p>
+      <a href="https://snapchat.com/t/KUuYOL6c " target="_blank" class="highlight-link">@MoneyJSY</a>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 MoneyJSY. All rights reserved.</p>
+    </footer>
+  </div>
+  <!-- Cart Bubble -->
+  <div class="cart-wrapper">
+    <div class="cart-total" id="cart-total">Total: £0.00</div>
+    <button onclick="openCheckout()">Checkout</button>
+  </div>
+  <!-- Modal -->
+  <div id="checkoutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCheckout()">&times;</span>
+      <h2>Confirm Your Order</h2>
+      <ul id="checkout-list"></ul>
+      <hr>
+      <strong>Total: <span id="checkout-total">£0.00</span></strong>
+      <br><br>
+      <button onclick="submitOrder()" style="margin-right: 10px;">Make Purchase</button>
+      <button onclick="closeCheckout()">Cancel</button>
+    </div>
+  </div>
+  <!-- Order Confirmation Popup -->
+  <div id="orderPopup" class="order-popup">
+    <div class="popup-content">
+      <span class="close" onclick="closeOrderPopup()">&times;</span>
+      <h2>Order Confirmation</h2>
+      <p>Please copy the text below and create a ticket on Discord:</p>
+      <textarea id="orderDetails" class="copy-box" readonly></textarea>
+      <button onclick="window.open('https://discord.gg/HthFtYDFfD ', '_blank')">Open Discord</button>
+    </div>
+  </div>
+  <!-- Inventory Placeholder -->
+  <script>
+    const inventory = [
+      {
+        "name": "Cortez x 95s",
+        "price": 69.99,
+        "image": "95.gif"
+      }
+    ];
+  </script>
+  <!-- Script -->
+  <script>
+    let cart = [];
+
+    function updateCartDisplay() {
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+      document.getElementById('cart-total').textContent = `Total: £${total}`;
+    }
+
+    function addToCart(productName) {
+      const item = inventory.find(i => i.name === productName);
+      if (!item) return;
+      const existing = cart.find(i => i.name === productName);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...item, quantity: 1 });
+      }
+      updateCartDisplay();
+      refreshCheckoutModal(); // Refresh modal content in real-time
+    }
+
+    function removeFromCart(productName) {
+      const index = cart.findIndex(i => i.name === productName);
+      if (index !== -1) {
+        cart[index].quantity -= 1;
+        if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
+        }
+      }
+      updateCartDisplay();
+      refreshCheckoutModal(); // Refresh modal content in real-time
+    }
+
+    function openCheckout() {
+      refreshCheckoutModal(); // Populate modal content
+      document.getElementById("checkoutModal").style.display = "block";
+    }
+
+    function closeCheckout() {
+      document.getElementById("checkoutModal").style.display = "none";
+    }
+
+    function submitOrder() {
+      const itemsList = cart.map(item => `- ${item.name} (x${item.quantity}) (£${(item.price * item.quantity).toFixed(2)})`).join('\n');
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+      const orderDetails = `I'd like to purchase:\n${itemsList}\nTotal: £${totalPrice}`;
+
+      // Populate the order confirmation popup
+      document.getElementById("orderDetails").value = orderDetails;
+      document.getElementById("orderPopup").style.display = "block";
+    }
+
+    function closeOrderPopup() {
+      document.getElementById("orderPopup").style.display = "none";
+    }
+
+    function refreshCheckoutModal() {
+      const list = document.getElementById("checkout-list");
+      const total = document.getElementById("checkout-total");
+      list.innerHTML = ""; // Clear the current list
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = 
+          `${item.name} - £${(item.price * item.quantity).toFixed(2)} (x${item.quantity})
+          <button onclick="addToCart('${item.name.replace(/'/g, "\\'")}')">+</button>
+          <button onclick="removeFromCart('${item.name.replace(/'/g, "\\'")}')">-</button>`;
+        list.appendChild(li);
+      });
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+      total.textContent = `£${totalPrice}`;
+    }
+
+    function filterProducts() {
+      const input = document.getElementById("search-input").value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = name.includes(input) ? "block" : "none";
+      });
+    }
+
+    window.onload = () => {
+      const grid = document.getElementById('product-grid');
+      if (!inventory.length) {
+        grid.innerHTML = "<p>No items found. Please run the inventory manager to add items.</p>";
+        return;
+      }
+      inventory.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = 
+          `<img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Image+Not+Found ';">
+          <h3>${item.name}</h3>
+          <p>£${parseFloat(item.price).toFixed(2)}</p>
+          <button onclick="addToCart('${item.name.replace(/"/g, '&quot;')}')">Add to Cart</button>`;
+        grid.appendChild(card);
+      });
+      updateCartDisplay();
+    };
+  </script>
+</body>
+</html>
