@@ -22,7 +22,6 @@
       text-decoration: none;
       color: inherit;
     }
-
     /* Hero Section */
     .hero {
       text-align: center;
@@ -38,10 +37,8 @@
       font-size: 1.2rem;
       color: #ccc;
     }
-
-    /* Button Styles */
-    .discord-button,
-    .snapchat-btn {
+    /* Discord Button Styles */
+    .discord-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -56,49 +53,81 @@
       text-decoration: none;
       margin-top: 1.5rem;
     }
-
-    .discord-button:hover,
+    .discord-button:hover {
+      background-color: transparent;
+      color: #6a0dad;
+    }
+    .discord-button .icon {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+    .discord-button .texts {
+      margin-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+    }
+    .discord-button .text-1 {
+      margin-bottom: 0.25rem;
+      font-size: 0.75rem;
+      color: #ddd;
+    }
+    .discord-button .text-2 {
+      font-weight: 600;
+    }
+    /* Snapchat Button Styles (Matching Discord) */
+    .snapchat-link {
+      display: inline-block;
+    }
+    .snapchat-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #6a0dad;
+      border-radius: 9999px;
+      background-color: #6a0dad;
+      padding: 0.625rem 1.5rem;
+      text-align: center;
+      color: #fff;
+      outline: 0;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      margin-left: 1rem;
+    }
     .snapchat-btn:hover {
       background-color: transparent;
       color: #6a0dad;
     }
-
-    .discord-button .icon,
     .snapchat-btn svg {
       height: 1.5rem;
       width: 1.5rem;
       margin-right: 0.5rem;
     }
-
-    .discord-button .texts,
     .snapchat-btn .texts {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       line-height: 1;
     }
-
-    .text-1 {
+    .snapchat-btn .text-1 {
       margin-bottom: 0.25rem;
       font-size: 0.75rem;
       color: #ddd;
     }
-
-    .text-2 {
+    .snapchat-btn .text-2 {
       font-weight: 600;
     }
-
     /* FAQ Section */
     .faq-section {
       max-width: 800px;
       margin: 4rem auto;
       padding: 0;
     }
-
     .faq-item {
       margin-bottom: 1rem;
     }
-
     .faq-question {
       font-size: 1.2rem;
       color: #c06aff;
@@ -112,11 +141,9 @@
       align-items: center;
       transition: background-color 0.3s ease;
     }
-
     .faq-question:hover {
       background-color: #1a1a1a;
     }
-
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -131,22 +158,18 @@
       transform: translateY(-10px);
       transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
     }
-
     .faq-question.active + .faq-answer {
       max-height: 200px;
       padding: 1.5rem;
       opacity: 1;
       transform: translateY(0);
     }
-
     .arrow {
       transition: transform 0.3s ease;
     }
-
     .faq-question.active .arrow {
       transform: rotate(180deg);
     }
-
     /* Features Section */
     .features {
       display: flex;
@@ -156,7 +179,6 @@
       background-color: #000;
       flex-wrap: wrap;
     }
-
     .feature-box {
       background-color: #111;
       padding: 2rem;
@@ -166,20 +188,16 @@
       border: 1px solid #6a0dad;
       transition: transform 0.3s ease;
     }
-
     .feature-box:hover {
       transform: translateY(-5px);
     }
-
     .feature-box h3 {
       color: #c06aff;
       margin-bottom: 1rem;
     }
-
     .feature-box p {
       color: #aaa;
     }
-
     /* Footer */
     .footer {
       text-align: center;
@@ -192,15 +210,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to MoneyJSY</h1>
     <p>Where style meets hustle. Find the freshest drops here.</p>
-
-    <!-- Social Buttons -->
     <div style="display: flex; justify-content: center; align-items: center;">
       <!-- Discord Button -->
-      <a href="https://discord.gg/HthFtYDFfD " target="_blank" class="discord-button">
+      <a href="https://discord.gg/HthFtYDFfD  " target="_blank" class="discord-button">
         <svg viewBox="0 -28.5 256 256" class="icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"></path>
         </svg>
@@ -211,9 +226,9 @@
       </a>
 
       <!-- Snapchat Button -->
-      <a href="https://snapchat.com/t/KUuYOL6c " target="_blank" class="snapchat-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M15.943 11.526c-.111-.303-.323-.465-.564-.599a1.416 1.416 0 0 0-.123-.064l-.219-.111c-.752-.399-1.339-.902-1.746-1.498a3.387 3.387 0 0 1-.3-.531c-.034-.1-.032-.156-.008-.207a.338.338 0 0 1 .097-.1c.129-.086.262-.173.352-.231.162-.104.289-.187.371-.245.309-.216.525-.446.66-.702a1.397 1.397 0 0 0 .069-1.16c-.205-.538-.713-.872-1.329-.872a1.829 1.829 0 0 0-.487.065c.006-.368-.002-.757-.035-1.139-.116-1.344-.587-2.048-1.077-2.61a4.294 4.294 0 0 0-1.095-.881C9.764.216 8.92 0 7.999 0c-.92 0-1.76.216-2.505.641-.412.232-.782.53-1.097.883-.49.562-.96 1.267-1.077 2.61-.033.382-.04.772-.036.1138a1.83 1.83 0 0 0-.487-.065c-.615 0-1.124.335-1.328.873a1.398 1.398 0 0 0 .067 1.161c.136.256.352.486.66.701.082.058.21.14.371.246l.339.221a.38.38 0 0 1 .109.11c.026.053.027.11-.012.217a3.363 3.363 0 0 1-.295.52c-.398.583-.968 1.077-1.696 1.472-.385.204-.786.34-.955.8-.128.348-.044.743.28 1.075.119.125.257.23.409.31a4.43 4.43 0 0 0 1 .4.66.66 0 0 1 .202.09c.118.104.102.26.259.488.079.118.18.22.296.3.33.229.701.243 1.095.258.355.014.758.03 1.217.18.19.064.389.186.618.328.55.338 1.305.802 2.566.802 1.262 0 2.02-.466 2.576-.806.227-.14.424-.26.609-.321.46-.152.863-.168 1.218-.181.355-.015.764-.03 1.218-.181.004-.005c.304-.325.38-.709.256-1.047Zm-1.121.602c-.684.378-1.139.337-1.493.565-.3.193-.122.61-.34.76-.269.186-1.061-.012-2.085.326-.845.279-1.384 1.082-2.903 1.082-1.519 0-2.045-.801-2.904-1.084-1.022-.338-1.816-.14-2.084-.325-.218-.15-.041-.568-.341-.761-.354-.228-.809-.187-1.492-.563-.436-.24-.189-.39-.044-.46 2.478-1.199 2.873-3.05 2.89-3.188.022-.166.045-.297-.138-.466-.177-.164-.962-.65-1.18-.802-.36-.252-.52-.503-.402-.812.082-.214.281-.295.49-.295a.93.93 0 0 1 .197.022c.396.086.78.285 1.002.338.027.007.054.01.082.011.118 0 .16-.06.152-.195-.026-.433-.087-1.277-.019-2.066.094-1.084.444-1.622.859-2.097.2-.229 1.137-1.22 2.93-1.22 1.792 0 2.732.987 2.931 1.215.416.475.766 1.013.859 2.098.068.788.009 1.632-.019 2.065-.01.142.034.195.152.195a.35.35 0 0 0 .082-.01c.222-.054.607-.253 1.002-.338a.912.912 0 0 1 .197-.023c.21 0 .409.082.49.295.117.309-.04.56-.401.812-.218.152-1.003.638-1.18.802-.184.169-.16.3-.139.466.018.14.413 1.991 2.89 3.189.147.073.394.222-.041.464Z"></path>
+      <a href="https://snapchat.com/t/KUuYOL6c  " target="_blank" class="snapchat-link snapchat-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-snapchat" viewBox="0 0 16 16">
+          <path d="M15.943 11.526c-.111-.303-.323-.465-.564-.599a1.416 1.416 0 0 0-.123-.064l-.219-.111c-.752-.399-1.339-.902-1.746-1.498a3.387 3.387 0 0 1-.3-.531c-.034-.1-.032-.156-.008-.207a.338.338 0 0 1 .097-.1c.129-.086.262-.173.352-.231.162-.104.289-.187.371-.245.309-.216.525-.446.66-.702a1.397 1.397 0 0 0 .069-1.16c-.205-.538-.713-.872-1.329-.872a1.829 1.829 0 0 0-.487.065c.006-.368-.002-.757-.035-1.139-.116-1.344-.587-2.048-1.077-2.61a4.294 4.294 0 0 0-1.095-.881C9.764.216 8.92 0 7.999 0c-.92 0-1.76.216-2.505.641-.412.232-.782.53-1.097.883-.49.562-.96 1.267-1.077 2.61-.033.382-.04.772-.036.1138a1.83 1.83 0 0 0-.487-.065c-.615 0-1.124.335-1.328.873a1.398 1.398 0 0 0 .067 1.161c.136.256.352.486.66.701.082.058.21.14.371.246l.339.221a.38.38 0 0 1 .109.11c.026.053.027.11-.012.217a3.363 3.363 0 0 1-.295.52c-.398.583-.968 1.077-1.696 1.472-.385.204-.786.34-.955.8-.128.348-.044.743.28 1.075.119.125.257.23.409.31a4.43 4.43 0 0 0 1 .4.66.66 0 0 1 .202.09c.118.104.102.26.259.488.079.118.18.22.296.3.33.229.701.243 1.095.258.355.014.758.03 1.217.18.19.064.389.186.618.328.55.338 1.305.802 2.566.802 1.262 0 2.02-.466 2.576-.806.227-.14.424-.26.609-.321.46-.152.863-.168 1.218-.181.393-.015.764-.03 1.218-.181.004-.005c.304-.325.38-.709.256-1.047Zm-1.121.602c-.684.378-1.139.337-1.493.565-.3.193-.122.61-.34.76-.269.186-1.061-.012-2.085.326-.845.279-1.384 1.082-2.903 1.082-1.519 0-2.045-.801-2.904-1.084-1.022-.338-1.816-.14-2.084-.325-.218-.15-.041-.568-.341-.761-.354-.228-.809-.187-1.492-.563-.436-.24-.189-.39-.044-.46 2.478-1.199 2.873-3.05 2.89-3.188.022-.166.045-.297-.138-.466-.177-.164-.962-.65-1.18-.802-.36-.252-.52-.503-.402-.812.082-.214.281-.295.49-.295a.93.93 0 0 1 .197.022c.396.086.78.285 1.002.338.027.007.054.01.082.011.118 0 .16-.06.152-.195-.026-.433-.087-1.277-.019-2.066.094-1.084.444-1.622.859-2.097.2-.229 1.137-1.22 2.93-1.22 1.792 0 2.732.987 2.931 1.215.416.475.766 1.013.859 2.098.068.788.009 1.632-.019 2.065-.01.142.034.195.152.195a.35.35 0 0 0 .082-.01c.222-.054.607-.253 1.002-.338a.912.912 0 0 1 .197-.023c.21 0 .409.082.49.295.117.309-.04.56-.401.812-.218.152-1.003.638-1.18.802-.184.169-.16.3-.139.466.018.14.413 1.991 2.89 3.189.147.073.394.222-.041.464Z"></path>
         </svg>
         <span class="texts">
           <span class="text-1">VISIT</span>
@@ -225,7 +240,7 @@
       <a href="https://moneyjsy.github.io/MoneyJS/ " target="_blank" class="snapchat-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
           <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 2a5 5 0 1 1 0 10A5 5 0 0 1 8 3z"/>
-          <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+          <path d="M8 6a2 2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
         </svg>
         <span class="texts">
           <span class="text-1">VISIT</span>
@@ -234,11 +249,10 @@
       </a>
     </div>
   </section>
-
   <!-- FAQ Section -->
   <section class="faq-section">
     <h2 style="text-align:center; margin-bottom: 2rem;">💬 Frequently Asked Questions</h2>
-    <!-- Question Blocks -->
+    <!-- Question 1 -->
     <div class="faq-item">
       <div class="faq-question" onclick="toggleFAQ(this)">
         How do I make money reselling?
@@ -250,9 +264,60 @@
         It’s simple: you buy cheap, sell high, and keep the difference.
       </div>
     </div>
-    <!-- More FAQ items... (truncated for brevity) -->
+    <!-- Question 2 -->
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        What kind of products do you offer?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        We specialize in limited editions, trending streetwear, exclusive sneakers,
+        and high-demand accessories that are perfect for reselling.
+      </div>
+    </div>
+    <!-- Question 3 -->
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Do I need experience to start?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        Not at all! Our platform is designed for beginners and pros alike.
+        We guide you through every step — from sourcing to selling.
+      </div>
+    </div>
+    <!-- Question 4 -->
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        Is there a community or support available?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        Yes! Join our Discord server for real-time updates, product drops,
+        tips, tricks, and support from other resellers.
+      </div>
+    </div>
+    <!-- Question 5 -->
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        How can I trust this?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        We understand trust is important. That’s why we have a dedicated “Vouches” section in our Discord where members share proof of their purchases and sales. See real results from real people before you commit.
+      </div>
+    </div>
+    <!-- New Question -->
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        What if I don't have Discord?
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        No problem! It’s super easy to register and join our server. Just download the app or visit Discord in your browser, create a free account, and click the invite link. You’ll be in within minutes!
+      </div>
+    </div>
   </section>
-
   <!-- Features Section -->
   <section class="features">
     <div class="feature-box">
@@ -268,17 +333,16 @@
       <p>We only bring you the best.</p>
     </div>
   </section>
-
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 MoneyJSY. All rights reserved.</p>
   </footer>
-
   <script>
     function toggleFAQ(element) {
       const item = element.parentElement;
       const answer = item.querySelector('.faq-answer');
       const isActive = element.classList.contains('active');
+      // Close all open answers
       document.querySelectorAll('.faq-question').forEach(q => {
         q.classList.remove('active');
         const ans = q.nextElementSibling;
@@ -286,6 +350,7 @@
           ans.style.maxHeight = null;
         }
       });
+      // If not already active, open this one
       if (!isActive) {
         element.classList.add('active');
         answer.style.maxHeight = answer.scrollHeight + "px";
